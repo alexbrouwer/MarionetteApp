@@ -7,6 +7,9 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <field name="firstName" type="string" />
+        <field name="lastName" type="string" />
+
         <many-to-many target-entity="Gearbox\SecurityBundle\Entity\Group" field="groups">
             <join-table name="user_group_index">
                 <join-columns>

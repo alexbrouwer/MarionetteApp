@@ -2,11 +2,10 @@
 
 namespace Gearbox\SecurityBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserType extends AbstractType
+class UserType extends BaseType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -14,24 +13,12 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('username', 'text')
-            ->add('email', 'email')
-            ->add('password','password')
-//            ->add('groups', 'groups')
-        ;
+        parent::buildForm($builder, $options);
+
+        $builder->add('firstName', 'text');
+        $builder->add('lastName', 'text');
     }
     
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'Gearbox\SecurityBundle\Entity\User'
-        ));
-    }
-
     /**
      * @return string
      */
