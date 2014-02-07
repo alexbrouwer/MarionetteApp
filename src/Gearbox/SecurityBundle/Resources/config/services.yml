@@ -1,0 +1,13 @@
+parameters:
+    gearbox_security.user.class: Gearbox\SecurityBundle\Entity\User
+    gearbox_security.manager.user: Gearbox\SecurityBundle\Model\UserManager
+
+services:
+
+    gearbox_security.user.form:
+        class: Gearbox\SecurityBundle\Form\UserType
+
+    gearbox_security.user.manager:
+        class: Gearbox\SecurityBundle\Model\UserManager
+        parent: gearbox_api.manager.abstract
+        arguments: [%gearbox_security.user.class%, @gearbox_security.user.form]

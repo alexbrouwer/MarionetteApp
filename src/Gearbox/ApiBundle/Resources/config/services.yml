@@ -1,0 +1,21 @@
+parameters:
+    gearbox_api.manager.abstract.class: Gearbox\ApiBundle\Model\AbstractApiManager
+    gearbox_api.listener.initializable.class: Gearbox\ApiBundle\Listener\InitializableListener
+
+services:
+
+    # Manager
+
+    gearbox_api.manager.abstract:
+        class: %gearbox_api.manager.abstract.class%
+        abstract: true
+        calls:
+            - [setObjectManager, [@doctrine.orm.entity_manager]]
+            - [setFormFactory, [@form.factory]]
+
+    # Listeners
+
+    gearbox_api.listener.initializable:
+        class: %gearbox_api.listener.initializable.class%
+        tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }

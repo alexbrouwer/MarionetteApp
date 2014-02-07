@@ -1,0 +1,11 @@
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /admin/group
+
+gearbox_security_user:
+    type: rest
+    resource: Gearbox\SecurityBundle\Controller\UserController
+    prefix: /api
