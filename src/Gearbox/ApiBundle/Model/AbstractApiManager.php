@@ -102,10 +102,13 @@ class AbstractApiManager implements ApiManagerInterface
      */
     protected function processForm($entity, array $parameters, $method = self::METHOD_PUT)
     {
-        $form = $this->createForm($entity, $method);
-        $form->submit($parameters[$form->getName()], 'PATCH' !== $method);
-        if ($form->isValid()) {
-            return $this->saveEntity($form->getData());
+        $form     = $this->createForm($entity, $method);
+        $formName = $form->getName();
+        if (array_key_exists($formName, $parameters)) {
+            $form->submit($parameters[$formName], self::METHOD_PATCH !== $method);
+            if ($form->isValid()) {
+                return $this->saveEntity($form->getData());
+            }
         }
 
         throw new InvalidFormException('Invalid submitted data', $form);

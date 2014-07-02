@@ -7,7 +7,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class UserType extends BaseType
 {
-        /**
+    public function __construct() {
+        parent::__construct('Gearbox\SecurityBundle\Entity\User');
+    }
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -18,7 +22,7 @@ class UserType extends BaseType
         $builder->add('firstName', 'text');
         $builder->add('lastName', 'text');
     }
-    
+
     /**
      * @return string
      */

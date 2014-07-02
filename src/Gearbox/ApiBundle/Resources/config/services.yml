@@ -1,6 +1,7 @@
 parameters:
     gearbox_api.manager.abstract.class: Gearbox\ApiBundle\Model\AbstractApiManager
     gearbox_api.listener.initializable.class: Gearbox\ApiBundle\Listener\InitializableListener
+    gearbox_api.listener.invalidform.class: Gearbox\ApiBundle\Listener\InvalidFormExceptionListener
 
 services:
 
@@ -19,3 +20,8 @@ services:
         class: %gearbox_api.listener.initializable.class%
         tags:
           - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    gearbox_api.listener.invalidform:
+        class: %gearbox_api.listener.invalidform.class%
+        tags:
+          - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

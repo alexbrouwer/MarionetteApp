@@ -93,7 +93,7 @@ class UserController extends ApiController
             $newUser = $this->service->create($request->request->all());
 
             $routeOptions = array(
-                'id'      => $newUser->getId(),
+                'userName'      => $newUser->getUserName(),
                 '_format' => $request->get('_format')
             );
 
@@ -109,6 +109,7 @@ class UserController extends ApiController
      * @ApiDoc(
      *      section="Users",
      *      resource = true,
+     *      input = "Gearbox\SecurityBundle\Form\UserType",
      *      statusCodes = {
      *          204 = "Returned when successful",
      *          400 = "Returned when validation errors occurred",
@@ -130,7 +131,7 @@ class UserController extends ApiController
             );
 
             $routeOptions = array(
-                'id'      => $user->getId(),
+                'userName'      => $user->getUserName(),
                 '_format' => $request->get('_format')
             );
 

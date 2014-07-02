@@ -5,3 +5,4 @@ gearbox_client:
 gearbox_api_security:
     resource: "@GearboxSecurityBundle/Resources/config/routing.yml"
     prefix:   /
+    type: rest

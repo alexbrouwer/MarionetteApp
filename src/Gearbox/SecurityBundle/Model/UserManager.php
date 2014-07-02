@@ -17,7 +17,7 @@ class UserManager extends AbstractApiManager
 
     public function update(User $user, array $parameters)
     {
-        return $this->processForm($user, $parameters);
+        return $this->processForm($user, $parameters, self::METHOD_PUT);
     }
 
     public function patch(User $user, array $parameters)
